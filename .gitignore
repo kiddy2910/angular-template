@@ -1,0 +1,16 @@
+###### client ####
+node_modules/
+vendor/
+build/
+bin/
+bower-components/
+
+
+##### intelliJ ####
+.idea/
+*.iml
+
+#### eclipse ####
+server/**/.classpath
+server/**/.project
+server/**/.settings/**
