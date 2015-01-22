@@ -11,6 +11,6 @@ bower-components/
 *.iml
 
 #### eclipse ####
-server/**/.classpath
-server/**/.project
-server/**/.settings/**
+.classpath
+.project
+.settings/
