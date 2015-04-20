@@ -1,0 +1,13 @@
+<div class="main-section">
+    <div ng-include="'main/header/header.tpl.html'" ng-controller="HeaderCtrl" class="hoiio-header"></div>
+
+    <div class="hoiio-container">
+        <div ui-view class="hoiio-content"></div>
+
+        <ul>
+            <li ng-repeat="t in consentForms" ng-bind="t.name"></li>
+        </ul>
+
+        <div class="clearfix"></div>
+    </div>
+</div>

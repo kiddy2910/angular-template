@@ -1,31 +1,45 @@
-angular.module('ngBoilerplate', [
-    'ngResource',
-    'templates-app',
-    'templates-common',
-    'ngBoilerplate.home',
-    'ngBoilerplate.about',
-    'ui.router',
-    'ui.bootstrap'
+angular.module('app', [
+    'ngSanitize', 'ngResource', 'ui.router',
+    'templates-app', 'templates-common',
+    'com.hoiio.sdk.core', 'com.hoiio.sdk.bootstrap',
+    'constants', 'directives', 'filters', 'services', 'resources',
+    'app.main'
 ])
 
-.config(function myAppConfig($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/home');
+.config(function($httpProvider, $sceDelegateProvider, hoiioHttpProvider, hoiioResourceProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist(['self']);
+    $httpProvider.defaults.withCredentials = true;
+    hoiioHttpProvider.initialize();
+    hoiioResourceProvider.initialize();
 })
 
-.run(function run() {})
+.config(function($stateProvider) {
 
-.controller('AppCtrl', function AppCtrl($scope, $location, $resource) {
-    $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-        if (angular.isDefined(toState.data)) {
-            $scope.pageTitle = toState.data.pageTitle + ' | ngBoilerplate';
-        }
-    });
-    
-    var Theme = $resource('http://localhost:8080/sample/themes/');
-    var theme = Theme.save({}, function (a,b,c,d,e,f) {
-        console.log(JSON.stringify(theme));
-    });
-    
+    $stateProvider
+        .state('open', {
+            templateUrl: 'open/open.tpl.html'
+        });
 })
 
-;
+.run(function($location, $state, hoiioInit, hoiioHttp, State) {
+    hoiioInit.init(hoiioHttp.getUrlParameter('portal_url'));
+
+    var isCorrupted = (function checkIfCorruptedUrl() {
+        return $location.absUrl().indexOf('type=error&code=error_internal_server_error') > 0;
+    })();
+
+    if (isCorrupted) {
+        // $state.go(State.INTERNAL_SERVER_ERROR);
+        return;
+    }
+})
+
+.controller('AppCtrl', function($scope, $state) {
+    $scope.isPageLoaded = false;
+
+    $scope.$on('$stateChangeSuccess', function() {
+        $scope.isPageLoaded = true;
+    });
+    
+    $state.go('main');
+});

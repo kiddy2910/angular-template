@@ -20,16 +20,13 @@ module.exports = {
      * app's unit tests.
      */
     app_files: {
-        js: ['src/**/*.js', '!src/**/*.spec.js', '!src/assets/**/*.js'],
-        jsunit: ['src/**/*.spec.js'],
+        js: [ 'src/**/*.js', '!src/**/*.spec.js', '!src/assets/**/*.js' ],
+        jsunit: [ 'src/**/*.spec.js' ],
 
-        coffee: ['src/**/*.coffee', '!src/**/*.spec.coffee'],
-        coffeeunit: ['src/**/*.spec.coffee'],
+        atpl: [ 'src/app/**/*.tpl.html' ],
+        ctpl: [ 'src/common/**/*.tpl.html' ],
 
-        atpl: ['src/app/**/*.tpl.html'],
-        ctpl: ['src/common/**/*.tpl.html'],
-
-        html: ['src/index.html'],
+        html: [ 'src/index.html' ],
         less: 'src/less/main.less'
     },
 
@@ -62,21 +59,40 @@ module.exports = {
      */
     vendor_files: {
         js: [
+            'vendor/jquery/jquery.js',
             'vendor/angular/angular.js',
             'vendor/angular-resource/angular-resource.js',
-            'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
-            'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
+            'vendor/angular-sanitize/angular-sanitize.js',
             'vendor/angular-ui-router/release/angular-ui-router.js',
-            'vendor/angular-ui-utils/modules/route/route.js'
+
+            'vendor/bootstrap/dist/js/bootstrap.js',
+            'vendor/fineuploader-s3/custom.fineuploader.js',
+            'vendor/momentjs/moment.js',
+            'vendor/pickadate/lib/picker.js',
+            'vendor/pickadate/lib/picker.date.js',
+            'vendor/pickadate/lib/picker.time.js',
+            'vendor/hoiio-sdk-core/hoiio-sdk-core.js',
+            'vendor/hoiio-sdk-bootstrap/hoiio-sdk-bootstrap.js'
         ],
         css: [
+            'vendor/pickadate/lib/themes/classic.css',
+            'vendor/pickadate/lib/themes/classic.date.css',
+            'vendor/pickadate/lib/themes/classic.time.css',
+            'vendor/fineuploader-s3/custom.fineuploader.css',
+            'vendor/hoiio-sdk-bootstrap/hoiio-sdk-bootstrap.css',
+            'vendor/hoiio-sdk-core/hoiio-sdk-core.css'
         ],
         assets: [
+            'vendor/font-awesome/fonts/*'
+        ],
+        external_js: [
+            'vendor/html5shiv/dist/html5shiv.js',
+            'vendor/respond/respond.min.js',
+	        'vendor/es5-shim/es5-shim.min.js'
         ]
     },
-    
     server: {
-        listenPort: 4000,
+        listenPort: 4000,                                   // The port on which the server is to listen (means that the app is at http://localhost:3000 for instance)
         distFolder: __dirname + '/build'
     }
 };
