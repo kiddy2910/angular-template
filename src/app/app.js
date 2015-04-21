@@ -3,7 +3,7 @@ angular.module('app', [
     'templates-app', 'templates-common',
     'com.hoiio.sdk.core', 'com.hoiio.sdk.bootstrap',
     'constants', 'directives', 'filters', 'services', 'resources',
-    'app.main'
+    'app.main', 'app.open'
 ])
 
 .config(function($httpProvider, $sceDelegateProvider, hoiioHttpProvider, hoiioResourceProvider) {
@@ -11,14 +11,6 @@ angular.module('app', [
     $httpProvider.defaults.withCredentials = true;
     hoiioHttpProvider.initialize();
     hoiioResourceProvider.initialize();
-})
-
-.config(function($stateProvider) {
-
-    $stateProvider
-        .state('open', {
-            templateUrl: 'open/open.tpl.html'
-        });
 })
 
 .run(function($location, $state, hoiioInit, hoiioHttp, State) {
@@ -34,12 +26,12 @@ angular.module('app', [
     }
 })
 
-.controller('AppCtrl', function($scope, $state) {
+.controller('AppCtrl', function($scope, $state, MainState, OpenState) {
     $scope.isPageLoaded = false;
 
     $scope.$on('$stateChangeSuccess', function() {
         $scope.isPageLoaded = true;
     });
     
-    $state.go('main');
+    $state.go(MainState.MAIN);
 });

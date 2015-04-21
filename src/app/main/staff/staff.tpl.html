@@ -1,0 +1,10 @@
+<div class="staff-container row">
+    <div class="col-lg-2 col-md-3 col-sm-3">
+        <div ng-include="'main/staff/sidebar/sidebar.tpl.html'" ng-controller="StaffSidebarCtrl" class="hoiio-sidebar"></div>
+    </div>
+
+    <div class="content-column col-lg-10 col-md-9 col-sm-9">
+        <div>STAFF - State: {{currentState}}</div>
+        <div ui-view class="content"></div>
+    </div>
+</div>

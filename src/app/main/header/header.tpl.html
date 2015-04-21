@@ -9,23 +9,23 @@
             <span class="icon-bar"></span>
         </button>
         <a ng-click="reloadApp()" class="navbar-brand" href="javascript:void(0)">
-            <img class="logo" src="assets/calltracking.png">
-            <h3 class="name">Call Tracking</h3>
+            <img class="logo" src="assets/consenthub.png">
+            <h3 class="name">Consent Hub</h3>
         </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <nav id="header-navbar-collapse" class="collapse navbar-collapse" role="navigation">
-        <!-- <ul class="nav navbar-nav">
-            <li ng-class="{'hoiio-header-item-active': isCampaignState()}">
-                <a ui-sref="{{global.state.CAMPAIGN_OWN}}">Campaigns</a>
+    <nav ng-if="!isAgent()" id="header-navbar-collapse" class="collapse navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav">
+            <li ui-sref-active="hoiio-header-item-active">
+                <a ui-sref="{{MainState.AGENT}}">AGENT</a>
             </li>
         </ul>
 
         <ul class="nav navbar-nav">
-            <li ng-class="{'hoiio-header-item-active': isSettingsState()}">
-                <a ui-sref="{{global.state.SETTINGS_SUBSCRIPTION}}">Settings</a>
+            <li ui-sref-active="hoiio-header-item-active">
+                <a ui-sref="{{MainState.STAFF}}">STAFF</a>
             </li>
-        </ul> -->
+        </ul>
     </nav>
 </div>

@@ -1,18 +1,41 @@
 angular.module('app.main.route', [])
 
-.config(function($stateProvider) {
+.constant('MainState', {
+    MAIN: 'main',
+    AGENT: 'main.agent',
+    STAFF: 'main.staff'
+})
+
+.config(function($stateProvider, MainState) {
 
     $stateProvider
-        .state('main', {
+        .state(MainState.MAIN, {
+            url: '/main',
             templateUrl: 'main/main.tpl.html',
             controller: 'MainCtrl',
             resolve: {
-                AppData: function(appDataService) {
-                    return appDataService.get();
-                },
+                initData: function(initDataService) {
+                    return initDataService.get();
+                }
+            }
+        })
+        .state(MainState.AGENT, {
+            url: '/agent',
+            templateUrl: 'main/agent/agent.tpl.html',
+            controller: 'AgentCtrl',
+            resolve: {
+                blackWhiteList: function() {
 
-                ConsentForms: function(consentFormService) {
-                    return consentFormService.list();
+                }
+            }
+        })
+        .state(MainState.STAFF, {
+            url: '/staff',
+            templateUrl: 'main/staff/staff.tpl.html',
+            controller: 'StaffCtrl',
+            resolve: {
+                blackWhiteList: function() {
+
                 }
             }
         });

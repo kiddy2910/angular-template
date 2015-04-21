@@ -1,9 +1,9 @@
-angular.module('resources.appData', [])
+angular.module('resources.initData', [])
 
-.factory('appDataService', function(cachedResource) {
+.factory('initDataService', function(cachedResource) {
 
     var rootPath = "/init",
-        CACHE_KEY = "appData";
+        CACHE_KEY = "initData";
 
     return {
         get: function() {
