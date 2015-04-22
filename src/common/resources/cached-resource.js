@@ -1,33 +1,33 @@
 angular.module('resources.cachedResource', [])
 
 .factory('cachedResource', function($q, $cacheFactory, hoiioResource) {
-    var cache = $cacheFactory('ConsentHub');
+    var cache = $cacheFactory('ConsentHub123');
 
-    return function(cacheKey, ignoreCache) {
+    return function(cacheKey) {
         return {
             get: function(url, params) {
-                return checkAndCall(cacheKey, ignoreCache, 'get', url, params);
+                return checkAndCall(cacheKey, 'get', url, params);
             },
             save: function(url, params) {
-                return checkAndCall(cacheKey, ignoreCache, 'save', url, params);
+                return checkAndCall(cacheKey, 'save', url, params);
             },
             query: function(url, params) {
-                return checkAndCall(cacheKey, ignoreCache, 'query', url, params);
+                return checkAndCall(cacheKey, 'query', url, params);
             },
             remove: function(url, params) {
-                return checkAndCall(cacheKey, ignoreCache, 'remove', url, params);
+                return checkAndCall(cacheKey, 'remove', url, params);
             },
             "delete": function(url, params) {
-                return checkAndCall(cacheKey, ignoreCache, 'delete', url, params);
+                return checkAndCall(cacheKey, 'delete', url, params);
             }
         };
     };
 
-    function checkAndCall(cacheKey, ignoreCache, method, url, params) {
+    function checkAndCall(cacheKey, method, url, params) {
         var defer = $q.defer();
         var cacheData = cache.get(cacheKey);
 
-        if (ignoreCache && cacheData) {
+        if (cacheData) {
             defer.resolve(cacheData);
 
         } else {

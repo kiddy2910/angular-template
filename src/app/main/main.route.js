@@ -14,8 +14,8 @@ angular.module('app.main.route', [])
             templateUrl: 'main/main.tpl.html',
             controller: 'MainCtrl',
             resolve: {
-                initData: function(initDataService) {
-                    return initDataService.get();
+                initData: function(InitData) {
+                    return InitData.info();
                 }
             }
         })
