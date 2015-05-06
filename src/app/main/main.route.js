@@ -3,40 +3,35 @@ angular.module('app.main.route', [])
 .constant('MainState', {
     MAIN: 'main',
     AGENT: 'main.agent',
-    STAFF: 'main.staff'
+    STAFF: 'main.staff',
+    ERROR: 'main.error'
 })
 
-.config(function($stateProvider, MainState) {
-
+.config(function($urlRouterProvider, $stateProvider, MainState) {
+    $urlRouterProvider.otherwise('/main/500');
     $stateProvider
         .state(MainState.MAIN, {
             url: '/main',
             templateUrl: 'main/main.tpl.html',
             controller: 'MainCtrl',
             resolve: {
-                initData: function(InitData) {
-                    return InitData.info();
+                user: function(InitData) {
+                    return InitData.getUser();
                 }
             }
         })
         .state(MainState.AGENT, {
             url: '/agent',
             templateUrl: 'main/agent/agent.tpl.html',
-            controller: 'AgentCtrl',
-            resolve: {
-                blackWhiteList: function() {
-
-                }
-            }
+            controller: 'AgentCtrl'
         })
         .state(MainState.STAFF, {
             url: '/staff',
-            templateUrl: 'main/staff/staff.tpl.html',
-            controller: 'StaffCtrl',
-            resolve: {
-                blackWhiteList: function() {
-
-                }
-            }
+            template: '<div ui-view></div>',
+            controller: 'StaffCtrl'
+        })
+        .state(MainState.ERROR, {
+            url: '/500',
+            template: '<div ui-view>Unexpected error</div>'
         });
 });

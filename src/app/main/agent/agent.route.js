@@ -1,24 +1,19 @@
 angular.module('app.main.agent.route', [])
 
 .constant('AgentState', {
-    VOICE: 'main.agent.voice',
-    SMS: 'main.agent.sms',
-    FAX: 'main.agent.fax',
-    EMAIL: 'main.agent.email'
+    BWL: 'main.agent.bwl'
 })
 
 .config(function($stateProvider, AgentState) {
     $stateProvider
-        .state(AgentState.VOICE, {
-            url: '/voice'
-        })
-        .state(AgentState.SMS, {
-            url: '/sms'
-        })
-        .state(AgentState.FAX, {
-            url: '/fax'
-        })
-        .state(AgentState.EMAIL, {
-            url: '/email'
+        .state(AgentState.BWL, {
+            url: '/bwl',
+            templateUrl: 'main/shared/bwl.tpl.html',
+            controller: 'AgentBwlCtrl',
+            resolve: {
+                blackWhiteList: function(BlackWhiteList, Medium) {
+                    return BlackWhiteList.forMediumAndNumber(Medium.VOICE, '', 1);
+                }
+            }
         });
 });

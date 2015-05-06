@@ -1,0 +1,165 @@
+<section class="import-consent-container modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Import Consent List</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="medium-panel">
+                    <h4>Select Medium Options</h4>
+                    <ul>
+                        <li>
+                            <span class="medium-label">
+                                <i class="fa fa-phone"></i> Voice Call
+                            </span>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    None <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">None</a></li>
+                                    <li><a href="#">Allowed</a></li>
+                                    <li><a href="#">Blocked</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="medium-label">
+                                <i class="fa fa-comments"></i> SMS/MMS
+                            </span>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    Allowed <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">None</a></li>
+                                    <li><a href="#">Allowed</a></li>
+                                    <li><a href="#">Blocked</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="medium-label">
+                                <i class="fa fa-fax"></i> Fax
+                            </span>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    Blocked <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">None</a></li>
+                                    <li><a href="#">Allowed</a></li>
+                                    <li><a href="#">Blocked</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="medium-label">
+                                <i class="fa fa-envelope"></i> Email
+                            </span>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    None <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">None</a></li>
+                                    <li><a href="#">Allowed</a></li>
+                                    <li><a href="#">Blocked</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <hr/>
+
+                <div class="data-panel">
+                    <h4>Input Data Entry</h4>
+                    <ul class="nav hoiio-nav">
+                        <li class="active">
+                            <a>Single Entry</a>
+                        </li>
+                        <li>
+                            <a>Multiple Entries</a>
+                        </li>
+                    </ul>
+
+                    <form class="single-entry-form form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Phone</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">PDF</label>
+                            <div class="col-sm-10">
+                                <button class="btn btn-default">Choose file</button>
+                            </div>
+                        </div>
+
+                        <div class="conflict-message">
+                            <i class="fa fa-2x fa-warning"></i>
+                            <div class="message">2 conflicts (Voice Call, Email) found between this upload entry and the current Consent List. Click SUBMIT to override it.</div>
+                        </div>
+                    </form>
+
+                    <div class="multiple-entries-form form-horizontal">
+                        <button class="btn btn-default" type="button">Choose file</button>
+                        <button class="btn btn-default" type="button">
+                            <i class="fa fa-file-text-o"></i> CSV Template
+                        </button>
+
+                        <div class="conflict-message">
+                            <i class="fa fa-2x fa-warning"></i>
+                            <div class="message">
+                                2 conflicts (Voice Call, Email) found between this upload entry and the current Consent List. Click HERE to download the conflicting entries. In order to complete the uploading, please select:
+
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="conflictOption" value="overwrite" checked> Overwrite the conflicting entries
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="conflictOption" value="skip"> Skip the conflicting entries and Add new entries
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> I confirmed that the entry/entries submitted have given consent to <span ng-bind="user.company.name"></span> through the indicated Medium(s). I will be responsible for the accuracy of this submission.
+                    </label>
+                </div>
+                <button class="btn btn-primary" type="button">Submit</button>
+            </div>
+        </div>
+    </div>
+</section>

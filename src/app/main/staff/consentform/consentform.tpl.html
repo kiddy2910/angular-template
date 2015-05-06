@@ -1,0 +1,153 @@
+<section class="consent-form-container panel">
+    <div affix data-spy="affix" data-offset-top="60" class="panel-heading">
+        <div class="link-box pull-left">
+            <label>Consent Form Link</label>
+            <input type="text" class="form-control">
+        </div>
+        <button class="btn btn-primary pull-right" type="button">Edit</button>
+        <button class="btn btn-primary pull-right" type="button">Save</button>
+        <button class="btn btn-default pull-right" type="button">Cancel</button>
+    </div>
+
+    <div class="panel-body">
+        <section class="category">
+            <h4 class="title text-primary">
+                <span class="fa-stack">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+                </span>
+                Medium Options
+            </h4>
+            <div class="description">Check on the communications medium methods that you would like to made available as an option on this form for user to select.</div>
+            <div class="body">
+                <ul ng-init="hover.medium = -1">
+                    <li ng-mouseenter="hover.medium = 1" ng-mouseleave="hover.medium = -1">
+                        <span class="value"><i class="fa fa-phone"></i> Voice Call</span>
+                        <a ng-show="hover.medium === 1" class="remove pull-right" href="javascript:void(0)"><i class="fa fa-times-circle"></i></a>
+                    </li>
+                    <li ng-mouseenter="hover.medium = 2" ng-mouseleave="hover.medium = -1">
+                        <span class="value"><i class="fa fa-comments"></i> SMS/MMS</span>
+                        <a ng-show="hover.medium === 2" class="remove pull-right" href="javascript:void(0)"><i class="fa fa-times-circle"></i></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span class="value"><i class="fa fa-plus"></i> Add more options</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="ppfield-category category">
+            <h4 class="title text-primary">
+                <span class="fa-stack">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+                </span>
+                Personal Particulars
+            </h4>
+            <div class="description">Select the status of each Personal Particulars fields for the form.</div>
+            <div class="body">
+                <ul ng-init="hover.ppField = -1">
+                    <li ng-mouseenter="hover.ppField = 1" ng-mouseleave="hover.ppField = -1">
+                        <span class="value">
+                            <i class="text-danger fa fa-adn"></i> Name
+                            <a ng-show="hover.ppField === 1" class="text-muted" href="javascript:void(0)">set as optional</a>
+                        </span>
+                        <a ng-show="hover.ppField === 1" class="remove pull-right" href="javascript:void(0)"><i class="fa fa-times-circle"></i></a>
+                    </li>
+                    <li ng-mouseenter="hover.ppField = 2" ng-mouseleave="hover.ppField = -1">
+                        <span class="value">
+                            <i class="text-danger fa fa-phone"></i> Phone Number
+                            <a ng-show="hover.ppField === 2" class="text-muted" href="javascript:void(0)">set as optional</a>
+                        </span>
+                        <a ng-show="hover.ppField === 2" class="remove pull-right" href="javascript:void(0)"><i class="fa fa-times-circle"></i></a>
+                    </li>
+                    <li ng-mouseenter="hover.ppField = 3" ng-mouseleave="hover.ppField = -1">
+                        <span class="value">
+                            <i class="fa fa-envelope"></i> Email
+                            <a ng-show="hover.ppField === 3" class="text-danger" href="javascript:void(0)">set as required</a>
+                        </span>
+                        <a ng-show="hover.ppField === 3" class="remove pull-right" href="javascript:void(0)"><i class="fa fa-times-circle"></i></a>
+                    </li>
+                    <li ng-mouseenter="hover.ppField = 4" ng-mouseleave="hover.ppField = -1">
+                        <span class="value">
+                            <i class="fa fa-home"></i> Address
+                            <a ng-show="hover.ppField === 4" class="text-danger" href="javascript:void(0)">set as required</a>
+                        </span>
+                        <a ng-show="hover.ppField === 4" class="remove pull-right" href="javascript:void(0)"><i class="fa fa-times-circle"></i></a>
+                    </li>
+                    <li ng-mouseenter="hover.ppField = 5" ng-mouseleave="hover.ppField = -1">
+                        <span class="value">
+                            <i class="text-danger fa fa-nric"></i> NRIC/FIN
+                            <a ng-show="hover.ppField === 5" class="text-muted" href="javascript:void(0)">set as optional</a>
+                        </span>
+                        <a ng-show="hover.ppField === 5" class="remove pull-right" href="javascript:void(0)"><i class="fa fa-times-circle"></i></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span class="value"><i class="fa fa-plus"></i> Add more options</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="category">
+            <h4 class="title text-primary">
+                <span class="fa-stack">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-file-o fa-stack-1x fa-inverse"></i>
+                </span>
+                Terms &amp; Conditions
+            </h4>
+            <div class="description">Enter specific Terms &amp; Conditions for this form below.</div>
+            <div class="body">
+                <textarea rows="5" class="form-control"></textarea>
+            </div>
+        </section>
+
+        <section class="category">
+            <h4 class="title text-primary">
+                <span class="fa-stack">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-photo fa-stack-1x fa-inverse"></i>
+                </span>
+                Company Picture
+            </h4>
+            <div class="description">Choose and Upload a file you want to be your company avatar.</div>
+            <div class="body">
+                <img src="assets/consenthub.png" alt="..." class="img-thumbnail"><br/><br/>
+                <button class="btn btn-default" type="button">Choose file...</button>
+            </div>
+        </section>
+
+        <section class="category">
+            <h4 class="title text-primary">
+                <span class="fa-stack">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-bell-o fa-stack-1x fa-inverse"></i>
+                </span>
+                Notification Options
+            </h4>
+            <div class="description">
+                Inline with PDPA Notification Obligations, consent notifications will be sent to user immediately after he/she submit this form. By default, notifications will be automatically sent in the form of an Email and IVR call/SMS.
+                <br/>
+                <br/> Each IVR Call will be charged at SGD 1.7 cents per min
+                <br/> Each SMS will be charged at SGD 3.2 cents (for every 160 characters block)
+            </div>
+            <div class="body">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value=""> Include IVR Notifications (effective only when Email Notification is sent successfully)
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value=""> Include SMS Notifications (effective only when Email Notification is sent successfully)
+                    </label>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>

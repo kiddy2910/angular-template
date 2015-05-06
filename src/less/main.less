@@ -3,7 +3,6 @@
  * stylesheets used throughout the application as this is the only stylesheet in
  * the Grunt configuration that is automatically processed.
  */
-
 /**
  * This is our main variables file. It in turn imports the `variables` file from
  * Twitter Bootstrap. We must include it last so we can overwrite any variable
@@ -11,20 +10,22 @@
  */
 
 @import '../../vendor/font-awesome/less/font-awesome.less';
-
 @font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(https://themes.googleusercontent.com/static/fonts/sourcesanspro/v5/ODelI1aHBYDBqgeIAH2zlBM0YzuT7MdOe03otPbuUS0.woff) format('woff');
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(https://themes.googleusercontent.com/static/fonts/sourcesanspro/v5/ODelI1aHBYDBqgeIAH2zlBM0YzuT7MdOe03otPbuUS0.woff) format('woff');
 }
 
 @fa-font-path: ".";
-
 /**
  * Now that all app-wide styles have been applied, we can load the styles for
  * all the submodules and components we are using.
  */
-@import "variables";
-@import "layout";
+
+@import 'helpers';
+@import 'header';
 @import "override";
+@import "sidebar";
+@import "variables";
+@import "../app/app";

@@ -1,4 +1,4 @@
-angular.module('resources.cache', [])
+angular.module('service.cache', [])
 
 .factory('cache', function($cacheFactory, $q) {
     var cf = $cacheFactory('ConsentHub');

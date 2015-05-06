@@ -1,9 +1,10 @@
-angular.module('app.main.staff', ['app.main.staff.route', 'app.main.staff.sidebar'])
+angular.module('app.main.staff', ['app.main.staff.route',
+    'app.main.staff.header', 'app.main.staff.sidebar',
+    'app.main.staff.history', 'app.main.staff.bwl',
+    'app.main.staff.importConsent', 'app.main.staff.exportConsent',
+    'app.main.staff.consentForm'
+])
 
-.controller('StaffCtrl', function($scope, $state, initData, StaffState) {
-    $scope.$on('$stateChangeSuccess', function(e, toState) {
-        $scope.currentState = toState;
-        // TODO reload data
-    });
-    $state.go(StaffState.VOICE);
+.controller('StaffCtrl', function($state, StaffState) {
+    $state.go(StaffState.BWL);
 });

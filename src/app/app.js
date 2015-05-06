@@ -1,5 +1,5 @@
 angular.module('app', [
-    'ngSanitize', 'ngResource', 'ui.router',
+    'ngSanitize', 'ngResource', 'ngAnimate', 'ui.router', 'restangular',
     'templates-app', 'templates-common',
     'com.hoiio.sdk.core', 'com.hoiio.sdk.bootstrap',
     'constants', 'directives', 'filters', 'services', 'resources',
@@ -13,25 +13,23 @@ angular.module('app', [
     hoiioResourceProvider.initialize();
 })
 
-.run(function($location, $state, hoiioInit, hoiioHttp, State) {
-    hoiioInit.init(hoiioHttp.getUrlParameter('portal_url'));
-
-    var isCorrupted = (function checkIfCorruptedUrl() {
-        return $location.absUrl().indexOf('type=error&code=error_internal_server_error') > 0;
-    })();
-
-    if (isCorrupted) {
-        // $state.go(State.INTERNAL_SERVER_ERROR);
-        return;
-    }
+.config(function(hoiioHttpProvider, RestangularProvider) {
+    RestangularProvider.setBaseUrl(hoiioHttpProvider.getUrlParameter(hoiioHttpProvider.URL_PARAMETER.API_URL));
+    RestangularProvider.setDefaultHeaders({
+        'X-HOIIO-AUTHCODE': hoiioHttpProvider.getUrlParameter(hoiioHttpProvider.URL_PARAMETER.CODE)
+    });
 })
 
-.controller('AppCtrl', function($scope, $state, MainState, OpenState) {
+.run(function(hoiioInit, hoiioHttp) {
+    hoiioInit.init(hoiioHttp.getUrlParameter('portal_url'));
+})
+
+.controller('AppCtrl', function($scope, $state, MainState) {
     $scope.isPageLoaded = false;
 
     $scope.$on('$stateChangeSuccess', function() {
         $scope.isPageLoaded = true;
     });
-    
+
     $state.go(MainState.MAIN);
 });

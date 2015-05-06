@@ -1,0 +1,32 @@
+.border(@color) {
+    @border: @border-width solid @color;
+}
+
+.layout-two-columns(@left-size, @space) {
+    position: relative;
+    overflow: hidden;
+    .layout-left-column {
+        width: @left-size;
+        position: relative;
+        z-index: 50;
+        float: left;
+    }
+    .layout-right-column {
+        width: 100%;
+        position: relative;
+        z-index: 45;
+        padding-left: @left-size + @space;
+    }
+}
+
+.button-min-width {
+    min-width: 77px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}

@@ -1,8 +1,11 @@
-angular.module('app.main', ['app.main.route', 'app.main.header', 'app.main.agent', 'app.main.staff'])
+angular.module('app.main', ['app.main.route', 'app.main.agent', 'app.main.staff', 'app.main.shared.bwl'])
 
-.controller('MainCtrl', function($scope, $state, MainState, initData) {
+.controller('MainCtrl', function($scope, $state, hoiioHttp, MainState, user) {
     $scope.isAgent = function() {
-        return initData.isAgent();
+        return user.isAgent();
+    };
+    $scope.reloadApp = function() {
+        hoiioHttp.reloadPage();
     };
     $state.go($scope.isAgent() ? MainState.AGENT : MainState.STAFF);
 });

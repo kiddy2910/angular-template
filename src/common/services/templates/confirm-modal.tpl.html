@@ -1,22 +1,18 @@
-<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="confirm-modal modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" style="width: 400px">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 ng-bind-html="title" class="modal-title"></h4>
             </div>
-            
-            <div ng-bind-html="content" class="modal-body"></div>
-            
-            <div class="modal-footer">
-                <button ng-click="confirmedCallback()"
-                        ng-bind="confirmLabel"
-                        ng-disabled="isConfirming"
-                        class="btn btn-primary" type="button">Yes</button>
-                
-                <button ng-click="rejectedCallback()"
-                        ng-bind="rejectLabel"
-                        ng-disabled="isConfirming"
-                        type="button" class="btn btn-default" data-dismiss="modal">No</button>
+
+            <div class="modal-body">
+                <div ng-class="{'hidden': isNoIcon()}" class="icon"><i ng-class="[icon, color]" class="fa fa-2x"></i></div>
+                <div ng-class="{'no-padding': isNoIcon()}" class="message" ng-bind-html="message"></div>
+            </div>
+
+            <div class="buttons">
+                <button ng-click="confirm()" ng-bind="yesLabel" ng-disabled="isConfirming" class="btn btn-primary" type="button">Yes</button>
+                <button ng-click="reject()" ng-bind="noLabel" ng-disabled="isConfirming" type="button" class="btn btn-default" data-dismiss="modal">No</button>
             </div>
         </div>
     </div>

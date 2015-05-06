@@ -1,0 +1,95 @@
+<div class="history-container">
+    <div class="max-width-wrapper">
+        <section ng-class="{'section-fluid': hasResult}" class="search-section">
+            <form>
+                <div class="form-group">
+                    <label>Medium</label>
+                    <div class="btn-medium btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-phone"></i>Voice Call
+                            <span class="vertical-line"></span>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#"><i class="fa fa-phone"></i>Voice Call</a></li>
+                            <li><a href="#"><i class="fa fa-file-o"></i>Text Message</a></li>
+                            <li><a href="#"><i class="fa fa-fax"></i>Fax Message</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i>Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input pickadate ng-model="filter.date" format="dd/mm/yyyy" min="-90" max="true" max-model="filter.limitedMaxFromDate" on-select="onSelectFromDate(date)" on-clear="onSelectFromDate()" class="pull-left form-control" type="text" required>
+                    <input pickatime ng-model="filter.time" format="dd/mm/yyyy" min="-90" max="true" max-model="filter.limitedMaxFromDate" on-select="onSelectFromDate(date)" on-clear="onSelectFromDate()" class="pull-left form-control" type="text" required>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group">
+                    <label>Caller</label>
+                    <input class="form-control" type="text" placeholder="+6581234567">
+                </div>
+                <div class="form-group">
+                    <label>Destination</label>
+                    <input class="form-control" type="text" placeholder="+6581234567">
+                </div>
+                <button ng-click="hasResult = true" type="submit" class="btn btn-primary pull-right">
+                    <i class="fa fa-search"></i>Search
+                </button>
+                <div class="clearfix"></div>
+            </form>
+        </section>
+
+        <section ng-show="hasResult" class="result-section">
+            <div class="result-panel panel">
+                <button ng-click="hasResult = false" class="close btn-close pull-right" aria-label="Close" type="button"><i class="fa fa-times"></i></button>
+                <h4 class="summary-heading">
+                    <b>Status at Investigation Point:</b>
+                    <span class="badge badge-success">Allowed</span>
+                </h4>
+                <hr/>
+                <b class="logs-heading">MODIFIED LOGS</b>
+                <ul>
+                    <li>
+                        <div class="date-col">20-08-2014, 08:00 AM</div>
+                        <div class="des-col">
+                            +6581234567
+                            <span class="badge badge-success">Allowed</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="date-col">20-08-2014, 08:00 AM</div>
+                        <div class="des-col">
+                            +6581234567
+                            <span class="badge badge-danger">Blocked</span>
+                        </div>
+                    </li>
+                    <li class="point bg-success">
+                        <div class="date-col">20-08-2014, 08:00 AM</div>
+                        <div class="des-col">+6581234567</div>
+                    </li>
+                    <li>
+                        <div class="date-col">20-08-2014, 08:00 AM</div>
+                        <div class="des-col">
+                            +6581234567
+                            <span class="badge badge-danger">Blocked</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="date-col">20-08-2014, 08:00 AM</div>
+                        <div class="des-col">
+                            +6581234567
+                            <span class="badge badge-success">Allowed</span>
+                        </div>
+                    </li>
+                </ul>
+                <button class="btn-print pull-right btn btn-primary" type="button"><i class="fa fa-print"></i>Print</button>
+                <button ng-click="showHistoryLog()" class="pull-right btn btn-default" type="button"><i class="fa fa-list"></i>View All</button>
+                <div class="clearfix"></div>
+            </div>
+        </section>
+
+        <div ui-view></div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>

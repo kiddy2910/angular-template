@@ -1,0 +1,46 @@
+<section ng-cloak class="history-log-container modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">History Log of {{destination}}</h4>
+            </div>
+
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">When</th>
+                            <th class="text-center">Updated Status</th>
+                            <th class="text-center">Event</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">15-08-2015 08:20 PM</td>
+                            <td class="text-center">
+                                <span class="badge badge-success">Allowed</span>
+                            </td>
+                            <td>+84123457 change status</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">15-08-2015 08:20 PM</td>
+                            <td class="text-center">
+                                <span class="badge badge-success">Allowed</span>
+                            </td>
+                            <td>+84123457 change status</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">15-08-2015 08:20 PM</td>
+                            <td class="text-center">
+                                <span class="badge badge-success">Allowed</span>
+                            </td>
+                            <td>+84123457 change status</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div hoiio-pagination total-records="pagination.totalRecords" total-records-on-page="pagination.pageSize" on-paginate="paginate(currentPage)" class="pull-right"></div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -63,6 +63,7 @@ module.exports = {
             'vendor/angular/angular.js',
             'vendor/angular-resource/angular-resource.js',
             'vendor/angular-sanitize/angular-sanitize.js',
+            'vendor/angular-animate/angular-animate.js',
             'vendor/angular-ui-router/release/angular-ui-router.js',
 
             'vendor/bootstrap/dist/js/bootstrap.js',
@@ -71,6 +72,8 @@ module.exports = {
             'vendor/pickadate/lib/picker.js',
             'vendor/pickadate/lib/picker.date.js',
             'vendor/pickadate/lib/picker.time.js',
+            'vendor/lodash/lodash.js',
+            'vendor/restangular/dist/restangular.js',
             'vendor/hoiio-sdk-core/hoiio-sdk-core.js',
             'vendor/hoiio-sdk-bootstrap/hoiio-sdk-bootstrap.js'
         ],
@@ -88,7 +91,7 @@ module.exports = {
         external_js: [
             'vendor/html5shiv/dist/html5shiv.js',
             'vendor/respond/respond.min.js',
-	        'vendor/es5-shim/es5-shim.min.js'
+            'vendor/es5-shim/es5-shim.min.js'
         ]
     },
     server: {

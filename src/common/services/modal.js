@@ -2,11 +2,12 @@ angular.module('service.modal', [])
 
 .factory('modal', function($rootScope, $compile, $templateCache, $controller) {
 
-    function Modal(options) {
-        this.parentScope = options.parentScope;
-        this.templateUrl = options.templateUrl;
-        this.controller = options.controller;
-        this.$$data = angular.extend({}, options.data);
+    function Modal(opts) {
+        this.parentScope = opts.parentScope;
+        this.templateUrl = opts.templateUrl;
+        this.controller = opts.controller;
+        this.data = angular.extend({}, opts.data);
+        this.finally = angular.noop;
     }
 
     Modal.prototype.show = function() {
@@ -14,9 +15,9 @@ angular.module('service.modal', [])
             throw 'Modal must have property [templateUrl]';
         }
 
-        var modalScope = this.parentScope ? this.parentScope.$new(false) : $rootScope.$new(false);
-        modalScope = angular.extend(modalScope, this.$$data);
-        modalScope.$$modal = this;
+        var modalScope = angular.extend(this.parentScope ? this.parentScope.$new(false) : $rootScope.$new(false), this.data, {
+            $$modal: this
+        });
 
         if (this.controller != null) {
             $controller(this.controller, {
@@ -35,9 +36,11 @@ angular.module('service.modal', [])
                 modalScope.$destroy();
             }
             self.modalElement.remove();
+            self.finally();
         });
 
         this.modalElement.modal('show');
+        return this;
     };
 
     Modal.prototype.hide = function() {
@@ -46,7 +49,11 @@ angular.module('service.modal', [])
         }
     };
 
-    return function(options) {
-        return new Modal(options);
+    Modal.prototype.finally = function(fn) {
+        this.finally = fn || angular.noop;
+    };
+
+    return function(opts) {
+        return new Modal(opts);
     };
 });

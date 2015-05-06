@@ -1,0 +1,98 @@
+.import-consent-container {
+    @left-panel-width: 200px - @border-width;
+    .modal-body {
+        .layout-two-columns(@left-panel-width, @large-space-width);
+        h4 {
+            margin-top: 0;
+            font-weight: bold;
+        }
+        .medium-panel {
+            .layout-left-column;
+            > ul {
+                margin: @large-space-width 0;
+                padding: 0;
+                list-style: none;
+                > li {
+                    margin: @space-width 0;
+                    .medium-label {
+                        width: 95px;
+                        display: inline-block;
+                        i {
+                            margin-right: @small-space-width;
+                        }
+                    }
+                    button {
+                        width: 75px;
+                    }
+                }
+            }
+        }
+        .data-panel {
+            .layout-right-column;
+            .form-group {
+                overflow: hidden;
+                .control-label {
+                    text-align: left;
+                }
+            }
+            .conflict-message {
+                @i-width: 35px;
+                margin-top: @large-space-width;
+                .layout-two-columns(@i-width, @small-space-width);
+                i {
+                    .layout-left-column;
+                    color: #f0ad4e;
+                }
+                .message {
+                    .layout-right-column;
+                }
+            }
+        }
+        hr {
+            .border(@border-color);
+            position: absolute;
+            left: @left-panel-width + @large-space-width;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            border-left: @border;
+        }
+    }
+    .checkbox {
+        float: left;
+        text-align: left;
+        width: 85%;
+        margin: 0;
+    }
+    @media (min-width: 768px) {
+        .modal-dialog {
+            width: 680px !important;
+        }
+    }
+}
+
+.hoiio-nav {
+    overflow: hidden;
+    margin-bottom: @large-space-width;
+    li {
+        float: left;
+        border-bottom: 2px solid @border-color;
+        width: 50%;
+        text-align: center;
+        & > a {
+            color: #777777;
+            cursor: pointer;
+            &:hover {
+                color: #333333;
+                background-color: transparent;
+            }
+        }
+        &.active {
+            border-bottom-color: #0174B2;
+            & > a {
+                color: #0190de !important;
+                cursor: default;
+            }
+        }
+    }
+}

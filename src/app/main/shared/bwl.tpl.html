@@ -1,0 +1,86 @@
+<section ng-controller="SharedBwlCtrl" ng-cloak class="bwl-container panel">
+    <header class="panel-heading">
+        <h4 class="pull-left">
+            <span ng-if="!isAgent()">Company {{user.company.name}}</span>
+            <span ng-if="isAgent()">The Consent List</span>
+        </h4>
+        <button ng-click="showExportModal()" class="btn btn-primary pull-right" type="button">
+            <i class="fa fa-external-link"></i> Export to CSV file
+        </button>
+        <button ng-if="isDPO() || isAdmin()" ng-click="showImportModal()" class="btn btn-default pull-right" type="button">
+            <i class="fa fa-plus"></i>Import consents
+        </button>
+        <div ng-if="isAgent()">
+            <input class="form-control pull-right" type="text">
+            <label class="pull-right">Consent Form Link</label>
+        </div>
+    </header>
+    <div class="panel-body">
+        <div role="tabpanel">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a ng-click="activateState(Medium.VOICE)" href="javascript:void(0)" aria-controls="voice" role="tab" data-toggle="tab">
+                        <i class="fa fa-phone"></i>Voice Call
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a ng-click="activateState(Medium.SMS)" href="javascript:void(0)" aria-controls="sms" role="tab" data-toggle="tab">
+                        <i class="fa fa-comments"></i>SMS/MMS
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a ng-click="activateState(Medium.FAX)" href="javascript:void(0)" aria-controls="fax" role="tab" data-toggle="tab">
+                        <i class="fa fa-fax"></i>Fax Message
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a ng-click="activateState(Medium.EMAIL)" href="javascript:void(0)" aria-controls="email" role="tab" data-toggle="tab">
+                        <i class="fa fa-envelope"></i>Email
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active">
+                    <section loading-backdrop is-show="isLoading" class="bwl-list-container">
+                        <div class="input-group">
+                            <input ng-model="numberKeyword" hoiio-keypress on-keypress="getBwl()" hoiio-number-only class="form-control" type="text" placeholder="Filter consents by phone number">
+                            <span class="input-group-btn">
+                                <button ng-click="getBwl()" class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Status</th>
+                                    <th>Name</th>
+                                    <th>Destination</th>
+                                    <th>Lastest Modified</th>
+                                    <th class="text-center">Change Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="bw in blackWhiteList">
+                                    <td class="text-center">
+                                        <span ng-class="{'badge-success': bw.purposeMediumStatus.status === AllowStatus.ALLOWED, 'badge-danger': bw.purposeMediumStatus.status === AllowStatus.BLOCKED}" class="badge">{{bw.purposeMediumStatus.status | capitalize}}</span>
+                                    </td>
+                                    <td>Bryan Sarina</td>
+                                    <td ng-bind="bw.destination">+84914175678</td>
+                                    <td>{{bw.lastUpdated | date:'dd MMM yyyy, hh:mm a'}}</td>
+                                    <td class="text-center">
+                                        <a ng-click="changeStatus(bw.id)" href="javascript:void(0)"><i class="fa fa-toggle-on"></i></a>
+                                        <a ng-click="remove(bw.id)" href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div hoiio-pagination total-records="pagination.totalRecords" total-records-on-page="pagination.pageSize" on-paginate="paginate(currentPage)" class="pull-right"></div>
+                        <div class="clearfix"></div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

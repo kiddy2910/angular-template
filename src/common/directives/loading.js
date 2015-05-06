@@ -2,6 +2,9 @@ angular.module('directive.loading', [])
 
 .directive('loadingBackdrop', function() {
     return {
+        scope: {
+            isShow: '='
+        },
         link: function(scope, element) {
             var backdrop = $('<div class="hidden"></div>');
             backdrop.css('position', 'absolute');
@@ -15,6 +18,13 @@ angular.module('directive.loading', [])
             element.append(backdrop);
             element.css('position', 'relative');
 
+            scope.$watch('isShow', function(newValue) {
+                if (newValue) {
+                    backdrop.removeClass('hidden');
+                } else {
+                    backdrop.addClass('hidden');
+                }
+            });
             scope.$on('loading:show', function(e) {
                 backdrop.removeClass('hidden');
             });

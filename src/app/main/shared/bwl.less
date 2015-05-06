@@ -1,0 +1,59 @@
+.bwl-container {
+    .panel-heading {
+        border-color: @border-color;
+        overflow: hidden;
+        padding: 20px;
+        h4 {
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        button {
+            margin-left: @space-width;
+        }
+        input {
+            width: 150px;
+        }
+        label {
+            margin-top: 8px;
+            margin-right: @space-width;
+        }
+    }
+    .nav-tabs {
+        border-bottom: 0;
+        a {
+            color: inherit;
+        }
+        li.active > a {
+            background-color: transparent;
+            border-bottom-color: #fff;
+            &:hover, &:focus {
+                background-color: transparent;
+                border-bottom-color: #fff;
+            }
+        }
+    }
+    .tab-content {
+        .border(@border-color);
+        padding: @space-width;
+        border: @border;
+        .table {
+            margin-top: @space-width;
+        }
+    }
+    .bwl-list-container {
+        .input-group-btn i {
+            margin-right: 0;
+        }
+        tr > td a {
+            color: inherit;
+            opacity: 0.25
+        }
+        tr:hover > td a {
+            color: @link-color;
+            opacity: 1;
+            &:hover {
+                color: @link-hover-color;
+            }
+        }
+    }
+}

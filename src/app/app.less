@@ -1,2 +1,62 @@
+body {
+    font-family: "source sans pro";
+    background-color: @layout-bg-color;
+    color: #595959;
+    min-width: 768px;
+}
+
+.hoiio-container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.content-loading {
+    position: fixed;
+    padding: 50px 20px;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+    display: none !important;
+}
+
+.confirm-modal {
+    .modal-body {
+        @icon-width: 45px;
+        .layout-two-columns(@icon-width, 0);
+        overflow: hidden;
+        .icon {
+            .layout-left-column;
+            i {
+                margin-right: 0;
+            }
+        }
+        .message {
+            .layout-right-column;
+            &.no-padding {
+                padding-left: 0 !important;
+            }
+        }
+    }
+    .buttons {
+        text-align: center;
+        margin-bottom: 30px;
+        button {
+            min-width: 77px;
+            &:first-child {
+                margin-right: 15px;
+            }
+        }
+    }
+}
+
 @import 'main/main';
 @import 'open/open';

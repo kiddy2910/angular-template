@@ -1,0 +1,149 @@
+.history-container {
+    @content-width: 870px;
+    @panel-width: 230px;
+    @button-dropdown-width: 30px;
+    @date-col-width: 160px;
+    @search-section-left: (@content-width / 2 - @panel-width / 2);
+    background-color: #fff;
+    padding: @large-space-width;
+    min-width: @content-width + 2 * @large-space-width;
+    .max-width-wrapper {
+        .layout-two-columns(@panel-width, @large-space-width);
+        .border(@border-color);
+        width: @content-width;
+        min-height: 560px;
+        margin: auto;
+        .search-section {
+            .layout-left-column;
+            margin-top: @large-space-width + @medium-space-width;
+            left: @search-section-left;
+            label {
+                display: block;
+            }
+            .btn-medium {
+                button {
+                    width: @panel-width;
+                    text-align: left;
+                    .caret {
+                        position: absolute;
+                        top: 16px;
+                        right: 10px;
+                    }
+                    .vertical-line {
+                        .border(#ccc);
+                        border-left: @border;
+                        width: 1px;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        right: 28px;
+                    }
+                }
+                .dropdown-menu {
+                    width: 100%;
+                }
+            }
+            .picker {
+                min-width: 256px;
+                max-width: 320px;
+            }
+            [pickadate] {
+                width: 120px;
+                margin-right: @medium-space-width;
+            }
+            [pickatime] {
+                width: 100px;
+            }
+            &.section-fluid {
+                left: 0;
+            }
+        }
+        .result-section {
+            .layout-right-column;
+            .result-panel {
+                border-color: @border-color;
+                position: relative;
+                padding: @large-space-width @large-space-width + @space-width;
+                .btn-close {
+                    position: absolute;
+                    top: @space-width;
+                    right: @space-width;
+                }
+                .summary-heading {
+                    padding-left: @space-width;
+                    .badge {
+                        margin-left: @space-width;
+                        font-size: smaller;
+                        padding: @small-space-width @space-width;
+                    }
+                }
+                .logs-heading {
+                    padding-left: @space-width;
+                }
+                ul {
+                    .layout-two-columns(@date-col-width, @space-width);
+                    margin: 0;
+                    padding: 0;
+                    margin-bottom: @space-width;
+                    list-style: none;
+                    li {
+                        overflow: hidden;
+                        margin-top: @space-width;
+                        border: @border;
+                        .date-col {
+                            .layout-left-column;
+                            padding: @space-width;
+                            border-right: @border;
+                        }
+                        .des-col {
+                            .layout-right-column;
+                            padding: @space-width;
+                        }
+                        &.point.bg-success .date-col {
+                            border-right-color: #e0e0e0;
+                        }
+                    }
+                }
+                .btn-print {
+                    margin-left: @space-width;
+                }
+            }
+        }
+        .search-section {
+            &.section-fluid-add {
+                -webkit-transition: left 1s ease 0.1s;
+                transition: left 1s ease 0.1s;
+            }
+            &.section-fluid-add-active {
+                left: 0;
+            }
+            &.section-fluid-remove {
+                -webkit-transition: left 1s ease 1s;
+                transition: left 1s ease 1s;
+                left: 0;
+            }
+            &.section-fluid-remove-active {
+                left: @search-section-left;
+            }
+        }
+        .result-section {
+            &.ng-hide-add {
+                -webkit-transition: 1s linear opacity;
+                transition: 1s linear opacity;
+                opacity: 1;
+            }
+            &.ng-hide-add-active {
+                opacity: 0;
+            }
+            &.ng-hide-remove {
+                -webkit-transition: right 1s ease 0s;
+                transition: right 1s ease 0s;
+                right: -900px;
+            }
+            &.ng-hide-remove-active {
+                right: 0;
+            }
+        }
+    }
+}
+@import 'history-log';

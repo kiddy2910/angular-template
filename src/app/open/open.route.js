@@ -10,11 +10,6 @@ angular.module('app.open.route', [])
         .state(OpenState.MAIN, {
             url: '/open',
             templateUrl: 'open/open.tpl.html',
-            controller: 'OpenCtrl',
-            resolve: {
-                AppData: function(appDataService) {
-                    return appDataService.get();
-                }
-            }
+            controller: 'OpenCtrl'
         });
 });

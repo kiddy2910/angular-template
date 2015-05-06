@@ -1,9 +1,63 @@
 <div class="agent-container row">
     <div class="col-lg-2 col-md-3 col-sm-3">
+        <button class="btn-export btn btn-primary" type="button">
+            <i class="fa fa-external-link"></i> Export customer list
+        </button>
         <div ng-include="'main/agent/sidebar/sidebar.tpl.html'" ng-controller="AgentSidebarCtrl" class="hoiio-sidebar"></div>
+        <div class="form-link">
+            <div class="heading">Consent Form Link</div>
+            <div class="container-fluid row">
+                <input class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-control" type="text">
+                <button class="btn btn-primary col-lg-4 col-md-4 col-sm-4 col-xs-4" type="button">Copy</button>
+            </div>
+        </div>
     </div>
 
     <div class="content-column col-lg-10 col-md-9 col-sm-9">
-        <div>AGENT - State: {{currentState}}</div>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Filter customers by phone number">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Name</th>
+                    <th>Destination</th>
+                    <th>Lastest Modified</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="badge badge-success">Allowed</span></td>
+                    <td>Bryan Sarina</td>
+                    <td>+84914175678</td>
+                    <td>Today, 09:30 AM</td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-success">Allowed</span></td>
+                    <td>Bryan Sarina</td>
+                    <td>+84914175678</td>
+                    <td>Today, 09:30 AM</td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-success">Allowed</span></td>
+                    <td>Bryan Sarina</td>
+                    <td>+84914175678</td>
+                    <td>Today, 09:30 AM</td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-success">Allowed</span></td>
+                    <td>Bryan Sarina</td>
+                    <td>+84914175678</td>
+                    <td>Today, 09:30 AM</td>
+                </tr>
+            </tbody>
+        </table>
+        <div hoiio-pagination total-records="125" total-records-on-page="10" on-paginate="onPaginate()" class="pull-right"></div>
     </div>
 </div>
